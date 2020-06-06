@@ -7,6 +7,7 @@ class CatList extends React.Component{
 
     renderCats = () => {
         console.log("cats", this.props.cats[0])
+       
         return this.props.cats[0].map((cat, index) => {
             return(
                 <Cat cat={cat} key={index}/>

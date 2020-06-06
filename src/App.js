@@ -10,10 +10,12 @@ class App extends Component {
   }
 
   handleLoading = () => {
-    console.log(this.props.loading)
+    console.log(this.props)
     if(this.props.loading) {
+      console.log("loading")
       return <div>Loading...</div>
     } else {
+      console.log('rendering cat list')
       return <CatList cats={this.props.cats} />
     }
   }
@@ -30,21 +32,30 @@ class App extends Component {
   }
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-      fetchCats: () => dispatch(fetchCats()),
-      addCats: (cats) => dispatch({type: "ADD_CATS", payload: cats})
-    }
-};
-
-const mapStateToProps = state => {
+const mapDispatchToProps = state => {
   return {
     cats: state.cats,
     loading: state.loading
   }
 }
 
+export default connect(mapDispatchToProps, { fetchCats })(App)
+
+// const mapDispatchToProps = dispatch => {
+//     return {
+//       fetchCats: () => dispatch(fetchCats()),
+//       addCats: (cats) => dispatch({type: "ADD_CATS", payload: cats})
+//     }
+// };
+
+// const mapStateToProps = state => {
+//   return {
+//     cats: state.cats,
+//     loading: state.loading
+//   }
+// }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
 

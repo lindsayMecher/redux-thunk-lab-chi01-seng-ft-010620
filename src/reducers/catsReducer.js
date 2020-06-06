@@ -1,5 +1,5 @@
 // add the catsReducer
-export const catsReducer = (state = {cats: [], loading: false}, action) => {
+export const catsReducer = (state = {cats: [], loading: true}, action) => {
     console.log(state, action)
     switch(action.type){
         case "LOADING_CATS":
